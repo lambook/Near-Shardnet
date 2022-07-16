@@ -16,7 +16,7 @@ For this guide, we are using a [Hetzner](https://hetzner.com) cloud server with 
 - price : 36 euros/month
 
 
-![server](images/node/server_hetzner.png "server")
+![server](images/server_hetzner.png "server")
 
 
 
@@ -26,61 +26,37 @@ In this section, we will learn how to create a Shardnet wallet
 
 1- Navigate to  https://wallet.shardnet.near.org and press Create account
 
-![server](images/wallet/wallet_01.png "server")
+![server](images/wallet_01.png "server")
 
 2-In the next page, Enter your Account-ID and press 'Reserve my Account-ID'
 
-![server](images/wallet/wallet_02.png "server")
+![server](images/wallet_02.png "server")
 
 3- Choose a security method, 'Secure paraphrase' is the safest and the recommended one
 
-![server](images/wallet/wallet_03.png "server")
+![server](images/wallet_03.png "server")
 
 4-Set up you security paraphrase (seed), you should keep it for yourself and never share it. Copy the paraphrase.
 You will be asked to verify it ine the next step
 
-![server](images/wallet/wallet_04.png "server")
+![server](images/wallet_04.png "server")
 
 5- You are asked to verify a given work from your secure paraphrase, enter it and press verify and complete
 
-![server](images/wallet/wallet_05.png "server")
+![server](images/wallet_05.png "server")
 
 6-Now , you are asked to verify the whole 12 work of teh paraphrase, enter them all and press Find my Account
 
-![server](images/wallet/wallet_07.png "server")
+![server](images/wallet_07.png "server")
 
 7-Your account has been created.You can see your Account-ID in the top right corner of the browser
 
-![server](images/wallet/wallet_08.png "server")
+![server](images/wallet_08.png "server")
 
 
-
-
-## How Setup a non root user
 
 
 In the following sections, **It's recommended** to run the commands  as a non-root user
-
-* Login as root and create a user
-
-   ```bash
-   root@Ubuntu-2004-focal-64-minimal ~ # sudo adduser nearuser
-    ```
-    add the user to the sudoers (nano or vim)
-   ```bash
-   root@Ubuntu-2004-focal-64-minimal ~ # EDITOR=vim visudo  
-   ```
-* Scroll down next to the line :
-   ```bash
-    root    ALL=(ALL:ALL) ALL
-   ```
-* Add the line :
-
-   ```bash
-   nearuser  ALL=(ALL) NOPASSWD:ALL
-   ```
-* Save a file and quit the editor.
-
 
 # Deploy the node
 
@@ -364,15 +340,15 @@ You will see the following outpu :
 Copy the url and paste it to you browser
 Grant Access to Near CLI
 
-![node_02](images/node/node_02.png "node_02")
+![node_02](images/node_02.png "node_02")
 
-![node_03](images/node/node_03.png "node_03")
+![node_03](images/node_03.png "node_03")
 
 
 
 After granting access you will see this page:
 
-![node_04](images/node/node_04.png "node_04")
+![node_04](images/node_04.png "node_04")
 
 Enter your account-id and press Enter:
 
@@ -458,7 +434,7 @@ You can see the node logs by runing the following command :
   ```
 Which will give the following output:
 
-![node_04](images/node/node_logs_01.png "node_04")
+![node_04](images/node_logs_01.png "node_04")
 
 
 You can install ccze to print pretty logs
@@ -472,7 +448,7 @@ Running the command
   ```
 will print the following
 
-![node_04](images/node/node_logs_02.png "node_04")
+![node_04](images/node_logs_02.png "node_04")
 
 
 
@@ -498,7 +474,7 @@ In our case :
 
 if successful, you will see the following :
 
-![node_04](images/staking/staking_01.png "node_04")
+![node_04](images/staking_01.png "node_04")
 
 
 
@@ -513,7 +489,7 @@ You can stake to your node by running the following command :
  ```
 if the staking transaction is successful , you will see the following output  :
 
-![node_04](images/staking/staking_02.png "node_04")
+![node_04](images/staking_02.png "node_04")
 
 Ping
 
@@ -527,7 +503,7 @@ to run a ping, use the following command:
 
 if successful, you will see the following:
 
-![node_04](images/staking/ping_01.png "node_04") 
+![node_04](images/ping_01.png "node_04") 
  
 
 
