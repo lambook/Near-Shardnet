@@ -16,9 +16,7 @@ For this guide, we are using a [Hetzner](https://hetzner.com) cloud server with 
 - price : 36 euros/month
 
 
-![server](assets/node/server_hetzner.png "server")
-
-
+![server](images/node/server_hetzner.png "server")
 
 
 
@@ -28,32 +26,32 @@ In this section, we will learn how to create a Shardnet wallet
 
 1- Navigate to  https://wallet.shardnet.near.org and press Create account
 
-![server](assets/wallet/wallet_01.png "server")
+![server](images/wallet/wallet_01.png "server")
 
 2-In the next page, Enter your Account-ID and press 'Reserve my Account-ID'
 
-![server](assets/wallet/wallet_02.png "server")
+![server](images/wallet/wallet_02.png "server")
 
 3- Choose a security method, 'Secure paraphrase' is the safest and the recommended one
 
-![server](assets/wallet/wallet_03.png "server")
+![server](images/wallet/wallet_03.png "server")
 
 4-Set up you security paraphrase (seed), you should keep it for yourself and never share it. Copy the paraphrase.
 You will be asked to verify it ine the next step
 
-![server](assets/wallet/wallet_04.png "server")
+![server](images/wallet/wallet_04.png "server")
 
 5- You are asked to verify a given work from your secure paraphrase, enter it and press verify and complete
 
-![server](assets/wallet/wallet_05.png "server")
+![server](images/wallet/wallet_05.png "server")
 
 6-Now , you are asked to verify the whole 12 work of teh paraphrase, enter them all and press Find my Account
 
-![server](assets/wallet/wallet_07.png "server")
+![server](images/wallet/wallet_07.png "server")
 
 7-Your account has been created.You can see your Account-ID in the top right corner of the browser
 
-![server](assets/wallet/wallet_08.png "server")
+![server](images/wallet/wallet_08.png "server")
 
 
 
@@ -68,7 +66,7 @@ In the following sections, **It's recommended** to run the commands  as a non-ro
    ```bash
    root@Ubuntu-2004-focal-64-minimal ~ # sudo adduser nearuser
     ```
-  add the user to the sudoers (nano or vim)
+    add the user to the sudoers (nano or vim)
    ```bash
    root@Ubuntu-2004-focal-64-minimal ~ # EDITOR=vim visudo  
    ```
@@ -91,7 +89,7 @@ In the following sections, **It's recommended** to run the commands  as a non-ro
 Sync and install the newest versions of all installed packages on the linux machine
 
    ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~$ sudo apt update && sudo apt upgrade -y
+   ouiouane@Ubuntu-2004-focal-64-minimal:~$ sudo apt update && sudo apt upgrade -y
    ```
 
 Install Node.js and npm
@@ -104,38 +102,38 @@ Install Node.js and npm
 
 Check Node.js and npm versions:
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ node -v
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ node -v
   v18.6.0
   ```
 
    ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ npm -v
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ npm -v
   8.13.2   
   ```
 
 Install NEAR-CLI
   ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~$ sudo npm install -g near-cli
+   ouiouane@Ubuntu-2004-focal-64-minimal:~$ sudo npm install -g near-cli
   ```
 
 Set Network to Shardnet
 In order to make it persistent, add it to ~/.bashrc.
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ echo 'export NEAR_ENV=shardnet' >> ~/.bashrc
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ echo 'export NEAR_ENV=shardnet' >> ~/.bashrc
   ```
 
 Near-Cli is now installed, you can check by running the following commands for example:
 
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ near validators current 
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ near validators current 
   ```   
 
 lists the current validators set
 
 
-![node_01](assets/node/node_01.png "node_01")
+![node_01](images/node/node_01.png "node_01")
 
 
 
@@ -146,7 +144,7 @@ lists the current validators set
 first, check that you have the required hardware specifications to run a node
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
   >   && echo "Supported" \
   >   || echo "Not supported"
   Supported
@@ -154,31 +152,31 @@ first, check that you have the required hardware specifications to run a node
 Install developer tools:
 
    ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
   ```
 Install Python pip
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ sudo apt install python3-pip
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ sudo apt install python3-pip
   ```
 
 Set the configuration
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ USER_BASE_BIN=$(python3 -m site --user-base)/bin
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ export PATH="$USER_BASE_BIN:$PATH"
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ USER_BASE_BIN=$(python3 -m site --user-base)/bin
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ export PATH="$USER_BASE_BIN:$PATH"
 
   ```
 Install Building env
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ sudo apt install clang build-essential make
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ sudo apt install clang build-essential make
   ```
 
 Install Rust & Cargo
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   ```
 
 you will see the following output , press 1 and press enter :
@@ -223,32 +221,32 @@ you will see the following output , press 1 and press enter :
 
 Source the environment
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ source $HOME/.cargo/env
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ source $HOME/.cargo/env
   ``` 
 
 Clone nearcore project from GitHub :
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ git clone https://github.com/near/nearcore
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ git clone https://github.com/near/nearcore
    ```  
 then
 
    ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~$ cd nearcore
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ git fetch
+   ouiouane@Ubuntu-2004-focal-64-minimal:~$ cd nearcore
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ git fetch
    ``` 
 
 checkout to the master branch
 
    ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ git checkout master
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ git checkout master
    Already on 'master'
    Your branch is up to date with 'origin/master'.
    ``` 
 Compile nearcore binary, run the following commands in the nearcore folder :
 
    ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ cargo build -p neard --release --features shardnet
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ cargo build -p neard --release --features shardnet
    ``` 
 The binary path is set to target/release/neard
 
@@ -263,7 +261,7 @@ Generate the initial required working directory and a couple of configuration fi
 Run the following command to generate working directory
 
    ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$./target/release/neard --home ~/.near init --chain-id shardnet --download-genesis 
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$./target/release/neard --home ~/.near init --chain-id shardnet --download-genesis 
    ```
 produces the following output :
    ```bash
@@ -271,59 +269,59 @@ produces the following output :
     2022-07-15T19:19:26.244006Z  INFO near: Using key ed25519:14Pbi1rtMo4s9PqxfxB3mLxz4FQdKQaDVm1KYKU7sT1S for node
     2022-07-15T19:19:26.244057Z  INFO near: Downloading genesis file from: https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/shardnet/genesis.json.xz ...
     [00:00:00] [####################################################################################################################################################################################] 1.11KB/1.11KB [5.82MB/s] (0s)
-    2022-07-15T19:19:27.068464Z  INFO near: Saved the genesis file to: /home/abahmane/.near/genesis.json ...
-    2022-07-15T19:19:27.082573Z  INFO near: Generated for shardnet network node key and genesis file in /home/abahmane/.near
+    2022-07-15T19:19:27.068464Z  INFO near: Saved the genesis file to: /home/ouiouane/.near/genesis.json ...
+    2022-07-15T19:19:27.082573Z  INFO near: Generated for shardnet network node key and genesis file in /home/ouiouane/.near
    ```
 
 Replace the config.json
 in config.json, modify the 2 parameters : boot_nodes and tracked_shards
 
    ````bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ rm ~/.near/config.json
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/shardnet/config.json
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ rm ~/.near/config.json
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/shardnet/config.json
    --2022-07-15 21:22:48--  https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/shardnet/config.json
    Resolving s3-us-west-1.amazonaws.com (s3-us-west-1.amazonaws.com)... 52.219.116.232
    Connecting to s3-us-west-1.amazonaws.com (s3-us-west-1.amazonaws.com)|52.219.116.232|:443... connected.
    HTTP request sent, awaiting response... 200 OK
    Length: 3647 (3.6K) [application/json]
-   Saving to: ‘/home/abahmane/.near/config.json’
+   Saving to: ‘/home/ouiouane/.near/config.json’
 
-   /home/abahmane/.near/config.json                         100%[===============================================================================================================================>]   3.56K  --.-KB/s    in 0s
+   /home/ouiouane/.near/config.json                         100%[===============================================================================================================================>]   3.56K  --.-KB/s    in 0s
 
-   2022-07-15 21:22:49 (112 MB/s) - ‘/home/abahmane/.near/config.json’ saved [3647/3647]
+   2022-07-15 21:22:49 (112 MB/s) - ‘/home/ouiouane/.near/config.json’ saved [3647/3647]
    ````
 
 Get latest snapshot
 
 Install aws Cli
   ````bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo apt-get install awscli -y
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo apt-get install awscli -y
   ````
 then
 
   ````bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ cd ~/.near
-  abahmane@Ubuntu-2004-focal-64-minimal:~/.near$ aws s3 --no-sign-request cp s3://build.openshards.io/stakewars/shardnet/data.tar.gz .
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ cd ~/.near
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/.near$ aws s3 --no-sign-request cp s3://build.openshards.io/stakewars/shardnet/data.tar.gz .
   tar -xzvf data.tar.gz
    ````
 
 Run the node
 You can start your node by  running the following command under nearcore folder:
   ````bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$./target/release/neard --home ~/.near run
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$./target/release/neard --home ~/.near run
   ````
 The command produces the following output:
 
   ````bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo ./target/release/neard --home ~/.near run
-  2022-07-14T17:34:45.514846Z  INFO neard: version="trunk" build="crates-0.14.0-216-g96f13d239" latest_protocol=100
-  2022-07-14T17:34:45.527357Z  INFO db: Created a new RocksDB instance. num_instances=1
-  2022-07-14T17:34:45.527828Z  INFO db: Dropped a RocksDB instance. num_instances=0
-  2022-07-14T17:34:45.527836Z  INFO near: Opening RocksDB database path=/home/abahmane/.near/data
-  2022-07-14T17:34:45.594753Z  INFO db: Created a new RocksDB instance. num_instances=1
-  2022-07-14T17:34:45.612921Z  INFO near_network::peer_manager::peer_manager_actor: Bandwidth stats total_bandwidth_used_by_all_peers=0 total_msg_received_count=0 max_max_record_num_messages_in_progress=0
-  2022-07-14T17:34:45.620805Z  INFO stats: #  941069 Waiting for peers 0 peers ⬇ 0 B/s ⬆ 0 B/s 0.00 bps 0 gas/s CPU: 0%, Mem: 60.1 MB
-  2022-07-14T17:34:45.620858Z DEBUG stats: EpochId(`Bz9n5HbzLd5Bmsuoc15xbKkJnuuMgNJm8YYb2qMngT2E`) Blocks in progress: 0 Chunks in progress: 0 Orphans: 0
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo ./target/release/neard --home ~/.near run
+  2022-07-15T19:34:43.519846Z  INFO neard: version="trunk" build="crates-0.14.0-216-g96f13d239" latest_protocol=100
+  2022-07-15T19:34:43.527357Z  INFO db: Created a new RocksDB instance. num_instances=1
+  2022-07-15T19:34:43.527828Z  INFO db: Dropped a RocksDB instance. num_instances=0
+  2022-07-15T19:34:43.527836Z  INFO near: Opening RocksDB database path=/home/ouiouane/.near/data
+  2022-07-15T19:34:43.594753Z  INFO db: Created a new RocksDB instance. num_instances=1
+  2022-07-15T19:34:43.612921Z  INFO near_network::peer_manager::peer_manager_actor: Bandwidth stats total_bandwidth_used_by_all_peers=0 total_msg_received_count=0 max_max_record_num_messages_in_progress=0
+  2022-07-15T19:34:43.620805Z  INFO stats: #  941069 Waiting for peers 0 peers ⬇ 0 B/s ⬆ 0 B/s 0.00 bps 0 gas/s CPU: 0%, Mem: 60.1 MB
+  2022-07-15T19:34:43.620858Z DEBUG stats: EpochId(`Bz9n5HbzLd5Bmsuoc15xbKkJnuuMgNJm8YYb2qMngT2E`) Blocks in progress: 0 Chunks in progress: 0 Orphans: 0
   2022-07-15T19:34:53.621893Z  INFO stats: #  941069 Waiting for peers 0 peers ⬇ 0 B/s ⬆ 0 B/s 0.00 bps 0 gas/s CPU: 92%, Mem: 155 MB
   2022-07-15T19:34:53.621944Z DEBUG stats: EpochId(`Bz9n5HbzLd5Bmsuoc15xbKkJnuuMgNJm8YYb2qMngT2E`) Blocks in progress: 0 Chunks in progress: 0 Orphans: 0
   2022-07-15T19:35:03.622780Z  INFO stats: #  941069 Downloading headers 1.73% (29355 left; at 941585) 5 peers ⬇ 109 kB/s ⬆ 109 kB/s 0.00 bps 0 gas/s CPU: 51%, Mem: 278 MB
@@ -341,7 +339,7 @@ in order to run  transactions via NEAR-CLI, a full access key needs to be instal
 
 run the command :
    ````bash
-    abahmane@Ubuntu-2004-focal-64-minimal:~$ near login
+    ouiouane@Ubuntu-2004-focal-64-minimal:~$ near login
    ````
 
 You will see the following outpu :
@@ -366,58 +364,58 @@ You will see the following outpu :
 Copy the url and paste it to you browser
 Grant Access to Near CLI
 
-![node_02](assets/node/node_02.png "node_02")
+![node_02](images/node/node_02.png "node_02")
 
-![node_03](assets/node/node_03.png "node_03")
+![node_03](images/node/node_03.png "node_03")
 
 
 
 After granting access you will see this page:
 
-![node_04](assets/node/node_04.png "node_04")
+![node_04](images/node/node_04.png "node_04")
 
 Enter your account-id and press Enter:
 
   ````bash
   Which account did you authorize for use with NEAR CLI?
   Enter it here (if not redirected automatically):
-  abahmane.shardnet.near
-  Logged in as [ abahmane.shardnet.near ] with public key [ ed25519:ATjazw... ] successfully
+  ouiouane-01.shardnet.near
+  Logged in as [ ouiouane-01.shardnet.near ] with public key [ ed25519:ATjazw... ] successfully
  ````
 
 Check the validator_key.json
 Run the following command :
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~$ cat ~/.near/validator_key.json
-  cat: /home/abahmane/.near/validator_key.json: No such file or directory
+  ouiouane@Ubuntu-2004-focal-64-minimal:~$ cat ~/.near/validator_key.json
+  cat: /home/ouiouane/.near/validator_key.json: No such file or directory
   ```
 If the file is not present, generate one like this :
 
    ```bash
-    near generate-key <pool_id> , (pool_id = account-id = abahmane)
+    near generate-key <pool_id> , (pool_id = account-id = ouiouane-01 in our case)
    ```
 
 Copy the file generated to shardnet folder and be sure to replace <pool_id> by your accountId
 
    ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~$ cp ~/.near-credentials/shardnet/abahmane.json ~/.near/validator_key.json
+   ouiouane@Ubuntu-2004-focal-64-minimal:~$ cp ~/.near-credentials/shardnet/ouiouane-01.json ~/.near/validator_key.json
    ```
 
 Edit ~/.near/validator_key.json file and change the following :
 
-- “account_id” : xxxx.factory.shardnet.near, where xxx is the PoolName (abahmane in our case)
+- “account_id” : xxxx.factory.shardnet.near, where xxx is the PoolName (ouiouane-01 in our case)
 - private_key to secret_key
 
 Start the node
    ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ target/release/neard run
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ target/release/neard run
    ```
 
 Install the node Service
 
    ```bash
-    abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo vi /etc/systemd/system/neard.service
+    ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo vi /etc/systemd/system/neard.service
    ```
 
 Copy and paste the following :
@@ -427,10 +425,10 @@ Copy and paste the following :
    Description=NEARd Daemon Service
    [Service]
    Type=simple
-   User=abahmane
+   User=<USER>
    #Group=near
-   WorkingDirectory=/home/abahmane/.near
-   ExecStart=/home/abahmane/nearcore/target/release/neard run
+   WorkingDirectory=/home/<USER>/.near
+   ExecStart=/home/<USER>/nearcore/target/release/neard run
    Restart=on-failure
    RestartSec=30
    KillSignal=SIGINT
@@ -440,40 +438,41 @@ Copy and paste the following :
    WantedBy=multi-user.target
   ```
 
+repalce <USER> by a non root user
 
 Enable neard service
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo systemctl enable neard
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo systemctl enable neard
   ```
 Start the node :
 
   ```bash 
-  abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo systemctl start neard
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ sudo systemctl start neard
   ```
 
 You can see the node logs by runing the following command :
 
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~/.near$ journalctl -n 100 -f -u neard
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/.near$ journalctl -n 100 -f -u neard
   ```
 Which will give the following output:
 
-![node_04](assets/node/node_logs_01.png "node_04")
+![node_04](images/node/node_logs_01.png "node_04")
 
 
 You can install ccze to print pretty logs
   ```bash
-  abahmane@Ubuntu-2004-focal-64-minimal:~/.near$ sudo apt install ccze
+  ouiouane@Ubuntu-2004-focal-64-minimal:~/.near$ sudo apt install ccze
   ```
 Running the command
 
   ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~/.near$ journalctl -n 100 -f -u neard | ccze -A
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/.near$ journalctl -n 100 -f -u neard | ccze -A
   ```
 will print the following
 
-![node_04](assets/node/node_logs_02.png "node_04")
+![node_04](images/node/node_logs_02.png "node_04")
 
 
 
@@ -494,12 +493,12 @@ repalace  :
 In our case :
 
   ```bash
-  near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "abahmane", "owner_id": "abahmane.shardnet.near", "stake_public_key": "ed25519:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "reward_fee_fraction": {"numerator": 3, "denominator": 100}, "code_hash":"DD428g9eqLL8fWUxv8QSpVFzyHi1Qd16P8ephYCTmMSZ"}' --accountId="abahmane.shardnet.near" --amount=30 --gas=300000000000000
+  near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "ouiouane-01", "owner_id": "ouiouane-01.shardnet.near", "stake_public_key": "ed25519:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "reward_fee_fraction": {"numerator": 3, "denominator": 100}, "code_hash":"DD428g9eqLL8fWUxv8QSpVFzyHi1Qd16P8ephYCTmMSZ"}' --accountId="ouiouane-01.shardnet.near" --amount=30 --gas=300000000000000
   ```
 
 if successful, you will see the following :
 
-![node_04](assets/staking/staking_01.png "node_04")
+![node_04](images/staking/staking_01.png "node_04")
 
 
 
@@ -510,11 +509,11 @@ Deposit and Stake NEAR
 You can stake to your node by running the following command :
 
  ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ near call abahmane.factory.shardnet.near deposit_and_stake --amount 1395 --accountId abahmane.shardnet.near --gas=300000000000000
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ near call ouiouane-01.factory.shardnet.near deposit_and_stake --amount 1395 --accountId ouiouane-01.shardnet.near --gas=300000000000000
  ```
 if the staking transaction is successful , you will see the following output  :
 
-![node_04](assets/staking/staking_02.png "node_04")
+![node_04](images/staking/staking_02.png "node_04")
 
 Ping
 
@@ -523,13 +522,12 @@ A ping should be issued each epoch to keep reported rewards current.
 to run a ping, use the following command:
 
    ```bash
-   abahmane@Ubuntu-2004-focal-64-minimal:~/nearcore$ near call abahmane.factory.shardnet.near ping '{}' --accountId abahmane.shardnet.near --gas=300000000000000
+   ouiouane@Ubuntu-2004-focal-64-minimal:~/nearcore$ near call ouiouane-01.factory.shardnet.near ping '{}' --accountId ouiouane-01.shardnet.near --gas=300000000000000
    ```
 
 if successful, you will see the following:
 
-![node_04](assets/staking/ping_01.png "node_04") 
+![node_04](images/staking/ping_01.png "node_04") 
  
-
 
 
